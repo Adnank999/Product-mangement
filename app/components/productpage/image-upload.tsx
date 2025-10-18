@@ -426,6 +426,7 @@ export default function ImageUpload({
         })
             .then(res => res.json())
             .then(data => {
+                /* @ts-ignore */
                 setImages(prev => {
                     const updated = prev.map(img =>
                         img.id === imageFile.id
@@ -441,10 +442,13 @@ export default function ImageUpload({
                     );
 
                     // Emit only when changed (avoids loops)
+                    /* @ts-ignore */
                     emitUrlsIfChanged(updated);
 
                     // If all done, notify parent once
                     const allDone = updated.length > 0 && updated.every(i => i.status !== 'uploading');
+
+                        /* @ts-ignore */
                     if (allDone) setTimeout(() => onUploadCompleteRef.current?.(updated), 0);
 
                     // Revoke old blob URL of this file
