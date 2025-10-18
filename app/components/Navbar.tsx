@@ -18,7 +18,7 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Products Manage", href: "/products" },
+    { name: "Products Manage", href: isAuthenticated ? "/products" : "/login" },
    
   ]
 
