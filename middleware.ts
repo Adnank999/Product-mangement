@@ -5,7 +5,8 @@ const protectedRoutes = ["/products"];
 
 export function middleware(request: NextRequest) {
   const token = request.cookies.get("authToken")?.value;
-  const { pathname } = request.nextUrl;
+  const pathname = request.nextUrl.pathname.replace(/\/$/, ""); 
+
 
   if (protectedRoutes.some((route) => pathname.startsWith(route)) && !token) {
     const loginUrl = new URL("/login", request.url);
