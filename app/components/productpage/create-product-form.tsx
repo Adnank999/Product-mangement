@@ -214,7 +214,7 @@ export default function ProductForm() {
                                                 <Input
                                                     type="number"
                                                     placeholder="e.g. 99.99"
-                                                    {...form.register("price")}
+                                                    {...form.register("price",{valueAsNumber : true})}
                                                     value={field.value}
                                                     onChange={(e) => field.onChange(Number(e.target.value))}
                                                 />
